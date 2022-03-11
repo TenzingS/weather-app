@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css'
 
 const App = () => {
-  const apiKey = process.env.REACT_APP_API_KEY
+  const apiKey = 'API KEY'
   const [weatherData, setWeatherData] = useState([{}])
   const [city, setCity] = useState("")
 
