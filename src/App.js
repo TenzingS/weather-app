@@ -1,37 +1,33 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css'
 import Weather from './weather';
+import Forecast from './forecast';
 
 const App = () => {
   const apiKey = process.env.REACT_APP_API_KEY 
-  const [cityData, setCityData] = useState([{}])
+
   const [city, setCity] = useState("")
   const [name, setName] = useState("")
-  const [state, setState] = useState("")
   const [country, setCountry] = useState("")
-  const [lat, setLat] = useState([])
-  const [lon, setLon] = useState([])
+  const [forecastData, setForecastData] = useState([])
   
 
-    async function getWeather(e){
+    function getWeather(e){
       if (e.key =="Enter") {
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&APPID=${apiKey}`)
-        .then(res => res.json())
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`)
+        .then(r => r.json())
         .then(data => {
-        console.log(data[0])
-        setCityData(data[0])
-        setName(data[0].name)
-        setState(data[0].state)
-        setCountry(data[0].country)
-        setLat(data[0].lat)
-        setLon(data[0].lon)
+          console.log(data)
+          setName(data.city.name)
+          setCountry(data.city.country)
+          setForecastData(data.list)
         })
-      }
-   }
+   }}
 
 
   return (
     <div className='container'>
+      <p>Welcome to Weather App! Enter in a location to get a weather of.</p>
       <input 
         className='input' 
         placeholder='Enter City...'
@@ -39,14 +35,13 @@ const App = () => {
         value={city}
         onKeyPress={getWeather} />
 
-        {typeof cityData.country === 'undefined' ? (
-          <div>
-            <p>Welcome to Weather App! Enter in a location to get a weather of.</p>
+        {name ? (
+          <div className='weather-data'>
+            <Weather name={name} country={country} forecastData={forecastData} />
+            <Forecast forecastData={forecastData} />
           </div>
         ):(
-          <div className='weather-data'>
-            <Weather name={name} state={state} country={country} lat={lat} lon ={lon} />
-          </div>
+          <></>
         )}
 
         {/* {weatherData.cod === "404" ? (
