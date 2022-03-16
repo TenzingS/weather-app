@@ -20,17 +20,18 @@
 }
 
 .weatherData1 {
-  margin-top: 100px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .weatherData {
-  margin-top: 100px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  display: flex;
 }
 
 .city {
@@ -44,10 +45,17 @@
 }
 
 .temp {
-  font-size: 80px;
+  font-size: 60px;
   padding: 10px;
-  border: 1px solid lightblue;
+  border: 1px solid black;
   border-radius: 12px;
+  margin: auto;
+}
+
+.temp-main {
+  text-align: center;
+  font-size: 60px;
+  margin: auto;
 }
 
 .temp-minmax {
@@ -64,5 +72,6 @@
 .wrapper {
   display: flex;
   border: 1px solid black;
+  overflow: hidden;
 }
 

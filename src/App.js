@@ -7,23 +7,20 @@ const App = () => {
   const apiKey = process.env.REACT_APP_API_KEY 
 
   const [city, setCity] = useState("")
-  const [name, setName] = useState("")
-  const [country, setCountry] = useState("")
-  const [forecastData, setForecastData] = useState([])
+  const [location, setLocation] = useState("")
   
 
     function getWeather(e){
       if (e.key =="Enter") {
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`)
+        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`)
         .then(r => r.json())
         .then(data => {
-          console.log(data)
-          setName(data.city.name)
-          setCountry(data.city.country)
-          setForecastData(data.list)
+          console.log(data[0])
+          setLocation(data[0])
+          // setForecastData(data.list)
+          // setCity("")
         })
    }}
-
 
   return (
     <div className='container'>
@@ -35,10 +32,10 @@ const App = () => {
         value={city}
         onKeyPress={getWeather} />
 
-        {name ? (
-          <div className='weather-data'>
-            <Weather name={name} country={country} forecastData={forecastData} />
-            <Forecast forecastData={forecastData} />
+        {location.lat ? (
+          <div>
+            <Weather location={location} />
+            {/* <Forecast forecastData={forecastData} /> */}
           </div>
         ):(
           <></>
