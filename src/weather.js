@@ -22,15 +22,27 @@ const Weather = ({location}) => {
 
     },[location.lat])
 
+    
+   const [loading,setLoading] = useState(true);
+
+   useEffect(() => {
+     setTimeout(() => {
+       setLoading(false);
+     },1000);
+   },[]);
+
     return (
         <div>
-            {current.length > 0 ? (
-                null
-            ):(
+            {loading ? 
+            <h2>"loading..."</h2>
+            :
+            current.weather ? (
                 <>
                 <Currentweather location={location} current={current} forecastData={forecastData} />
                 <Forecast forecastData={forecastData} />
                 </>
+            ):(
+                null
             )}    
         </div>
       );

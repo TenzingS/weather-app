@@ -9,11 +9,12 @@ const Currentweather = ({location, current, forecastData}) => {
             {current.weather ? 
             (<div className='weatherData temp'>
             <div className='city'>{location.name}, {location.state} {location.country}</div>
-            {console.log(current.weather[0].icon)}
-            Today
-                <img className='img' 
-                    src= {`https://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`} 
-                    alt= {current.weather[0].description}  title={current.weather[0].description} /> 
+            <span style={{fontSize: 30}}>Current</span>
+                <figure className='img'>
+                <img src= {`https://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`} 
+                    alt= {current.weather[0].description} title={current.weather[0].description} />
+                <figcaption>{current.weather[0].description}</figcaption>
+                </figure> 
                 <div className='temp-main' >{Math.round(current.temp)}°F </div>
                 <p className= 'temp-minmax'>{Math.round(minTemp)}°  {Math.round(maxTemp)}°</p>
                 </div>):(

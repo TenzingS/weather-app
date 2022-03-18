@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './App.css'
 import Weather from './weather';
-import Forecast from './forecast';
 
 const App = () => {
   const apiKey = process.env.REACT_APP_API_KEY 
@@ -22,6 +21,7 @@ const App = () => {
         })
    }}
 
+
   return (
     <div className='container'>
       <p>Welcome to Weather App! Enter in a location to get a weather of.</p>
@@ -31,11 +31,9 @@ const App = () => {
         onChange={e => setCity(e.target.value)}
         value={city}
         onKeyPress={getWeather} />
-
         {location.lat ? (
           <div>
             <Weather location={location} />
-            {/* <Forecast forecastData={forecastData} /> */}
           </div>
         ):(
           <></>

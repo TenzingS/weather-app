@@ -10,9 +10,10 @@ const Forecast = ({forecastData}) => {
                 return (
                     <div key={each.dt} className='weatherData temp'>
                         <p className='day'>{day}</p>
-                        <img className='img' 
-                        src= {`https://openweathermap.org/img/wn/${each.weather[0].icon}@2x.png`} 
-                        alt= {each.weather[0].description} title={each.weather[0].description} /> 
+                        <figure className='img' >
+                        <img src= {`https://openweathermap.org/img/wn/${each.weather[0].icon}@2x.png`} 
+                            alt= {each.weather[0].description} title={each.weather[0].description} /> 
+                        </figure>
                     <p className= 'temp-minmax'>{Math.round(each.temp.min)}°  {Math.round(each.temp.max)}°</p>
                     </div>
                 )
