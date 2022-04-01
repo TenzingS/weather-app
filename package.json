@@ -1,5 +1,4 @@
 {
-  "homepage": "http://TenzingS.github.io/weather-app",
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
@@ -15,7 +14,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build",
     "build": "CI= react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
