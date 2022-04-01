@@ -16,8 +16,7 @@ const App = () => {
         .then(data => {
           console.log(data[0])
           setLocation(data[0])
-          // setForecastData(data.list)
-          // setCity("")
+          setCity("")
         })
    }}
 
@@ -38,12 +37,6 @@ const App = () => {
         ):(
           <></>
         )}
-
-        {/* {weatherData.cod === "404" ? (
-          <p>Location not found. Please enter a valid location name.</p>
-        ):(
-          <></>
-        )} */}
     </div>
   );
 }
